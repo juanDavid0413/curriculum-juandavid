@@ -1,29 +1,52 @@
 import React from 'react';
+import './cssprueba.css';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+
 import Encabezado from './componentes/Encabezado';
 import Sobre_mi from './componentes/Sobre_mi';
 import Educacion from './componentes/Educacion';
 import Habilidades from './componentes/Habilidades';
 import Proyectos from './componentes/Proyectos';
 import Contacto from './componentes/Contacto';
-import './App.css';
 
-const App = () => {
+function App() {
   return (
-    <div className="app">
-      <Encabezado />
-      <div id="bloque">
-      <div id="izquierdo">
-      <Sobre_mi />
-      <Educacion />
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Inicio</Link>
+            </li>
+            <li>
+              <Link to="/Sobre_mi">Acerca de</Link>
+            </li>
+            <li>
+              <Link to="/Educacion">Educación</Link>
+            </li>
+            <li>
+              <Link to="/Habilidades">Habilidades</Link>
+            </li>
+            <li>
+              <Link to="/Proyectos">Proyectos</Link>
+            </li>
+            <li>
+              <Link to="/Contacto">Contacto</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Encabezado />} /> 
+          <Route path="/Sobre_mi" element={<Sobre_mi />} /> 
+          <Route path="/Educacion" element={<Educacion />} /> 
+          <Route path="/Habilidades" element={<Habilidades />} /> 
+          <Route path="/Proyectos" element={<Proyectos />} /> 
+          <Route path="/Contacto" element={<Contacto />} /> 
+        </Routes>
       </div>
-      <div id="derecho">
-      <Proyectos />
-      <Contacto />
-      <Habilidades />
-      </div>
-      </div>
-    </div>
+    </Router>
   );
-};
+}
 
 export default App;
