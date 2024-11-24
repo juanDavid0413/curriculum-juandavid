@@ -3,7 +3,7 @@ import './estilos.css';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
 import Encabezado from './componentes/Encabezado';
-import Sobre_mi from './componentes/Sobre_mi';
+import Sobre_mi from './componentes/SobreMi';
 import Educacion from './componentes/Educacion';
 import Habilidades from './componentes/Habilidades';
 import Proyectos from './componentes/Proyectos';
