@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Sobre_mi = () => {
+const SobreMi = () => {
   return (
     <section id="sobre_mi">
       <h2>Sobre mí</h2>
@@ -27,4 +27,4 @@ const Sobre_mi = () => {
   );
 };
 
-export default Sobre_mi;
+export default SobreMi;

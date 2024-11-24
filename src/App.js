@@ -3,7 +3,7 @@ import './estilos.css';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
 import Encabezado from './componentes/Encabezado';
-import Sobre_mi from './componentes/SobreMi';
+import SobreMi from './componentes/SobreMi';
 import Educacion from './componentes/Educacion';
 import Habilidades from './componentes/Habilidades';
 import Proyectos from './componentes/Proyectos';
@@ -19,7 +19,7 @@ function App() {
               <Link to="/">Inicio</Link>
             </li>
             <li>
-              <Link to="/Sobre_mi">Sobre Mi</Link>
+              <Link to="/SobreMi">Sobre Mi</Link>
             </li>
             <li>
               <Link to="/Educacion">Educación</Link>
@@ -38,7 +38,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Encabezado />} /> 
-          <Route path="/Sobre_mi" element={<Sobre_mi />} /> 
+          <Route path="/SobreMi" element={<SobreMi />} /> 
           <Route path="/Educacion" element={<Educacion />} /> 
           <Route path="/Habilidades" element={<Habilidades />} /> 
           <Route path="/Proyectos" element={<Proyectos />} /> 
