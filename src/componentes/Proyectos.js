@@ -1,58 +1,63 @@
 import React, { useState } from 'react';
-import '../App.css'; 
+import curriclum_bootstrap from '../imagenes/imgcurriculumbootstrap.png'; 
+import logo_paramedic from '../imagenes/Logo_paramedic_tour.png';
+import img_code from '../imagenes/code.png';
 
-import imagen1 from '../imagenes/imgcurriculumbootstrap.png'; 
-import imagen2 from '../imagenes/Logo_paramedic_tour.png';
+const Proyectos = () => {
+  const [hoveredDiv, setHoveredDiv] = useState(null);
 
-const ImageHover = () => {
-  const [hoveredImage, setHoveredImage] = useState(null);
-
-  const handleMouseEnter = (image) => {
-    setHoveredImage(image);
+  const handleMouseEnter = (id) => {
+    setHoveredDiv(id);
   };
 
   const handleMouseLeave = () => {
-    setHoveredImage(null);
+    setHoveredDiv(null);
   };
 
-  return (
-  <div id="projects">
-      <h2>Proyectos:</h2>
-    <div className="image-hover-container">
-      <div className="image-item">
-        <h3>Curriculum Personal Con Bootstrap</h3>
-        <div
-          className="image-wrapper"
-          onMouseEnter={() => handleMouseEnter('image1')}
-          onMouseLeave={handleMouseLeave}
-        >
-          <img src={imagen1} alt="Imagen 1" className="image" />
-          {hoveredImage === 'image1' && (
-            <div className="overlay">
-             <a href='https://devjuandacast.netlify.app'><button className="overlay-button">Ir A Curriculum Juan David</button> </a>
-            </div>
-           )}
-        </div>
-      </div>
+  const proyectos = [
+    {
+      id: 'paramedic',
+      imagen: logo_paramedic,
+      titulo: 'Paramedic Tour S.A.S',
+      enlace: 'https://paramedictour.netlify.app/',
+      textoBoton: 'Visitar Paramedictour'
+    },
+    {
+      id: 'curriculum',
+      imagen: curriclum_bootstrap,
+      titulo: 'Curriculum con Bootstrap',
+      enlace: 'https://devjuandacast.netlify.app/',
+      textoBoton: 'Ver Proyecto'
+    },
+    {
+      id: 'kiosko',
+      imagen: img_code,
+      titulo: 'Kiosko Tecnológico',
+      enlace: 'https://github.com/juanDavid0413/kiosko_tecnologico',
+      textoBoton: 'Ver Proyecto'
+    }
+  ];
 
-      <div className="image-item">
-        <h3>Pramedic tour  <br></br>S.A.S </h3>
+  return (
+    <section className="educacion">
+      {proyectos.map((proyecto) => (
         <div
-          className="image-wrapper"
-          onMouseEnter={() => handleMouseEnter('image2')}
+          key={proyecto.id}
+          className="divisor"
+          onMouseEnter={() => handleMouseEnter(proyecto.id)}
           onMouseLeave={handleMouseLeave}
         >
-          <img src={imagen2} alt="Imagen 2" className="image" />
-          {hoveredImage === 'image2' && (
-            <div className="overlay">
-              <a href='https://paramedictour.netlify.app'><button className="overlay-button">Ir A Paramedic Tour S.A.S</button></a>
-            </div>
+          <img src={proyecto.imagen} alt={proyecto.titulo} className="img_educacion" />
+          <h2><strong>{proyecto.titulo}</strong></h2>
+          {hoveredDiv === proyecto.id && (
+            <a href={proyecto.enlace} className="btn-link" target="_blank" rel="noopener noreferrer">
+              {proyecto.textoBoton}
+            </a>
           )}
         </div>
-      </div>
-    </div>
-  </div>
+      ))}
+    </section>
   );
 };
 
-export default ImageHover;
+export default Proyectos;

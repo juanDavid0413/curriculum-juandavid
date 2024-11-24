@@ -2,7 +2,7 @@ import React from 'react';
 
 const Sobre_mi = () => {
   return (
-    <section className="about">
+    <section id="sobre_mi">
       <h2>Sobre mí</h2>
       <p>
         Técnico en Análisis y Desarrollo de Software con una pasión por la tecnología y la resolución de problemas.

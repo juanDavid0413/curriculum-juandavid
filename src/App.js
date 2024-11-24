@@ -1,5 +1,5 @@
 import React from 'react';
-import './cssprueba.css';
+import './estilos.css';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
 import Encabezado from './componentes/Encabezado';
@@ -12,14 +12,14 @@ import Contacto from './componentes/Contacto';
 function App() {
   return (
     <Router>
-      <div>
+      <div id='barra_menu'>
         <nav>
           <ul>
             <li>
               <Link to="/">Inicio</Link>
             </li>
             <li>
-              <Link to="/Sobre_mi">Acerca de</Link>
+              <Link to="/Sobre_mi">Sobre Mi</Link>
             </li>
             <li>
               <Link to="/Educacion">Educación</Link>

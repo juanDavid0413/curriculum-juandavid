@@ -1,7 +1,4 @@
-import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import '../estilo_carrusel.css';
+import React, { useState } from 'react';
 import img_github from '../imagenes/imggithub.png';
 import imgvisual_studios from '../imagenes/imgvisual_studio.png';
 import imgbootstrap from '../imagenes/imgbootstrap.png';
@@ -16,71 +13,48 @@ import imgpython from '../imagenes/imgpython.png';
 import imgreact from '../imagenes/imgreact.png';
 
 const Habilidades = () => {
+  const [hoveredDiv, setHoveredDiv] = useState(null);
+
+  const habilidadesData = [
+    { id: 'react', img: imgreact, text: 'React: Biblioteca JavaScript para construir interfaces de usuario.' },
+    { id: 'python', img: imgpython, text: 'Python: Lenguaje de programación para desarrollo web, ciencia de datos, y más.' },
+    { id: 'mysql', img: imgmysql, text: 'MySQL: Sistema de gestión de bases de datos relacional.' },
+    { id: 'mongodb', img: imgmongodb, text: 'MongoDB: Base de datos NoSQL orientada a documentos.' },
+    { id: 'js', img: imgjs, text: 'JavaScript: Lenguaje de programación para desarrollo web y aplicaciones.' },
+    { id: 'html5', img: imghtml5, text: 'HTML5: Lenguaje de marcado para estructurar contenido en la web.' },
+    { id: 'djangorest', img: imgdjangorest, text: 'Django REST Framework: Framework para construir APIs en Django.' },
+    { id: 'django', img: imgdjango, text: 'Django: Framework web de alto nivel para Python.' },
+    { id: 'css3', img: imgcss3, text: 'CSS3: Lenguaje de hojas de estilo para diseño web.' },
+    { id: 'bootstrap', img: imgbootstrap, text: 'Bootstrap: Framework CSS para desarrollar sitios web rápidos y responsivos.' },
+    { id: 'visual_studios', img: imgvisual_studios, text: 'Visual Studio: Entorno de desarrollo integrado (IDE) para múltiples lenguajes.' },
+    { id: 'github', img: img_github, text: 'GitHub: Plataforma de desarrollo colaborativo basada en Git.' }
+  ];
+
+  const handleMouseEnter = (id) => {
+    setHoveredDiv(id);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredDiv(null);
+  };
+
   return (
-    <div class="carrusel">
-    <div>
-    <h2>Habilidades Basicas En Tecnologias Como:</h2>
-    </div>
-    <div>
-    <Carousel
-    autoPlay
-    interval={3000}
-    transitionTime={1000}
-    infiniteLoop
-    showArrows={true}
-    onChange={(index) => console.log(`Imagen ${index} seleccionada`)}
-    >
-    <div>
-    <img src={img_github} alt="logo_GitHub"/>
-    <p legend="logo_GitHub">GitHub</p>
-    </div>
-    <div>
-    <img src={imgvisual_studios} alt="imgvisual_studios"/>
-    <p legend="imgvisual_studios">Visual Studio Code / Visual Studio</p>
-    </div>
-    <div>
-      <img src={imgbootstrap} alt="imgbootstrap"/>
-      <p legend="imgbootstrap">Bootstrap</p>
-    </div>
-    <div>
-      <img src={imgcss3} alt="imgcss3"/>
-      <p legend="imgcss3">CSS3</p>
-    </div>
-    <div>
-      <img src={imgdjango} alt="imgdjango"/>
-      <p legend="imgdjango">Django Framework</p>
-    </div>
-    <div>
-      <img src={imgdjangorest} alt="imgdjangorest"/>
-      <p legend="imgdjangorest">Django Rest Framework</p>
-    </div>
-    <div>
-      <img src={imghtml5} alt="imghtml5"/>
-      <p legend="imghtml5">HTML5</p>
-    </div>
-    <div>
-      <img src={imgjs} alt="imgjs"/>
-      <p legend="imgjs">JavaScript</p>
-    </div>
-    <div>
-      <img src={imgmongodb} alt="imgmongodb"/>
-      <p legend="imgmongodb">MongoDB</p>
-    </div>
-    <div>
-      <img src={imgmysql} alt="imgmysql"/>
-      <p legend="imgmysql">MySQL</p>
-    </div>
-    <div>
-      <img src={imgpython} alt="imgpython"/>
-      <p legend="imgpython">Python</p>
-    </div>
-    <div>
-      <img src={imgreact} alt="imgreact"/>
-      <p legend="imgreact">React Framework</p>
-    </div>
-    </Carousel>
-    </div>
-    </div>
+    <section className="habilidades">
+      {habilidadesData.map((item) => (
+        <div
+          key={item.id}
+          className="container_habilidades"
+          onMouseEnter={() => handleMouseEnter(item.id)}
+          onMouseLeave={handleMouseLeave}
+        >
+          {hoveredDiv === item.id ? (
+            <p>{item.text}</p>
+          ) : (
+            <img src={item.img} alt={item.id} className="img_habilidades" /> 
+          )}
+        </div>
+      ))}
+    </section>
   );
 };
 
